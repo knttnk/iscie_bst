@@ -1,6 +1,6 @@
 # sci.bst
 
-ISCIEの[論文誌，学会誌](https://www.iscie.or.jp/pub/journal)に発行するときに， bibtex を使えるようにする目的で作成したbstファイルです．
+ISCIEの[論文誌，学会誌](https://www.iscie.or.jp/pub/journal)に発行するときに， bibtex を使えるようにする目的で作成した非公式のbstファイルです．
 
 使用中に問題を発見した場合は， [GitHub](https://github.com/knttnk/sci_bst) で issue を建ててください．
 
