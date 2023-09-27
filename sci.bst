@@ -63,7 +63,7 @@ ENTRY
 
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block
-           after.author}
+           after.author after.article.title is.article}
 
 FUNCTION {not}
 {   { #0 }
@@ -87,7 +87,8 @@ FUNCTION {init.state.consts}
   #3 'after.block :=
 
   #4 'after.author :=
-
+  #5 'after.article.title :=
+% EDITING:
 }
 STRINGS { s t }
 
@@ -102,18 +103,45 @@ FUNCTION {field.or.null}
 FUNCTION {output.nonnull} { 
   's :=
 
+  % EDITING:
+  % "a" write$
+  % is.article int.to.str$ write$
+  % "s" write$
+  % output.state int.to.str$ write$
+
+  % is.article output.state after.author = and {
+  %   output.state after.article.title = {
+  %     author field.or.null is.kanji.str$ 
+  %     editor field.or.null is.kanji.str$ or
+  %     organization field.or.null is.kanji.str$ or {
+  %       "；" * write$
+  %     } {
+  %       "; " * write$
+  %     } if$
+  %     after.article.title 'output.state :=
+  %     "aaaa" * write$
+  %   }
+  %   'skip$
+  %   if$
+  % }
+  % 'write$
+  % if$
+
+
+
+
+
+  % after.article.title 'output.state :=
+
   output.state mid.sentence = {
     ", " * write$
   } { 
-    output.state after.block =
-    { 
+    output.state after.block = { 
       add.period$ write$
       newline$
       "\newblock " write$
-    }
-    { 
-      output.state after.author =
-      { 
+    } { 
+      output.state after.author = { 
         author empty$ editor empty$ and organization empty$ and {
           write$
         } { 
@@ -127,14 +155,22 @@ FUNCTION {output.nonnull} {
         } if$
 
         mid.sentence 'output.state :=
-      }
-      'write$
-      if$
-    }
-    if$
+      } {
+        output.state after.article.title = {
+          author field.or.null is.kanji.str$ 
+          editor field.or.null is.kanji.str$ or
+          organization field.or.null is.kanji.str$ or {
+            "；" * write$
+          } {
+            "; " * write$
+          } if$
+        }
+        'write$
+        if$
+      } if$
+    } if$
     mid.sentence 'output.state :=
-  }
-  if$
+  } if$
   s
 }
 FUNCTION {output}
@@ -167,11 +203,11 @@ FUNCTION {fin.entry}
   newline$
 }
 FUNCTION {new.block}
-{ output.state before.all =
-
-    { after.author 'output.state := }
-    'skip$
-
+{ 
+  output.state before.all = {
+    after.author 'output.state :=
+  } 
+  'skip$
   if$
 }
 FUNCTION {new.sentence}
@@ -781,18 +817,23 @@ FUNCTION {format.incoll.inproc.crossref}
   " \cite{" * crossref * "}" *
 }
 FUNCTION {article}
-{ output.bibitem
+{
+  % EDITING:
+  #1 'is.article :=
+  
+  output.bibitem
   format.authors "author" output.check
   new.block
   format.title "title" output.check
   new.block
+  after.article.title 'output.state :=
   crossref missing$
     { journal emphasize "journal" output.check
-    "；" write$
 
       format.vol.num.pages output
       format.date "year" output.check
-    }
+
+}
     { format.article.crossref output.nonnull
       format.pages output
     }
@@ -801,6 +842,8 @@ FUNCTION {article}
   new.block
   note output
   fin.entry
+  
+  #0 'is.article :=
 }
 
 FUNCTION {format.book.pages}

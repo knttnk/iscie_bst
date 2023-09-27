@@ -1,0 +1,15 @@
+output.state の追跡
+
+l824 => l198
+before.all 
+
+l825 => l172
+mid.sentence
+
+l826
+
+l827 => l351
+after.author
+
+l827 => l186 => 'output.nonnull
+
