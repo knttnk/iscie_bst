@@ -1,4 +1,4 @@
-% sci.bst
+% iscie.bst
 % Author: 田中 健太 https://github.com/knttnk
 % Copyright (C) 2023, all rights reserved.
 
@@ -134,7 +134,13 @@ FUNCTION {output.nonnull} {
   % after.article.title 'output.state :=
 
   output.state mid.sentence = {
-    ", " * write$
+    author field.or.null is.kanji.str$ 
+    editor field.or.null is.kanji.str$ or
+    organization field.or.null is.kanji.str$ or {
+      "，" * write$
+    } {
+      ", " * write$
+    } if$
   } { 
     output.state after.block = { 
       add.period$ write$
