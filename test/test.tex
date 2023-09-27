@@ -1,10 +1,50 @@
-\documentclass[twocolumn]{jsarticle}
+\documentclass[J,amsmath]{scitrans}
+% ===========================================================================================
+% パッケージなど
+% ===========================================================================================
+\usepackage[dvipdfmx]{graphicx}
+\graphicspath{{images/}}
+\usepackage{amsfonts} %\mathbb{R} 実数など
+\usepackage{physics}
+
+
+% ===========================================================================================
+% 年, 巻, 号 ページの設定
+% ===========================================================================================
+\appearyear{0000}                        
+\vol{0}                                     
+\numberinvol{0}                         
+\setcounter{page}{1}
+\setcounter{volumepage}{1}
+\Transaction 
+\Shortpaper                                 
+\ForSubmission 
 
 \begin{document}
+
+    % ===========================================================================================
+    % タイトルや住所など
+    % ===========================================================================================
+    \title{タイトル}
+    \author{山田 太郎}
+    \etitle{Title}
+    \eauthor{Taro {\sc Yamada}${}^\dagger$}
+    \headingtitle{タイトル}
+    \headingauthors{山田}
+    \ronbunyoushi{iscie.bstのテスト}
+
+    \maketitle
+    \acceptdate{1995年8月1日}
+    \address{*}{\AcceptDate}
+    \address{**}{Some University}
+    \keywords{Reinforcement learning, information alteration.}
+
     % この論文を見本とさせていただきました．
     % https://www.jstage.jst.go.jp/article/iscie1988/21/12/21_12_408/_pdf
+    % https://www.jstage.jst.go.jp/article/iscie/34/10/34_261/_pdf
+    % https://www.jstage.jst.go.jp/article/iscie/35/3/35_39/_pdf
     \section*{本文テスト}
-        参考文献\cite{azuma2008optimal,東俊一2007離散値入力型制御のための最適動的量子化器の安定性}
+        参考文献\cite{azuma2008optimal,東俊一2007離散値入力型制御のための最適動的量子化器の安定性,永原正章2017-10-06}
 
     \section*{見本}
         \begin{thebibliography}{9}
@@ -28,8 +68,14 @@
             % ISCIE スタイルオプション；
             % システム/制御/情報，Vol.~00, No.~0, pp.~000--999 (1999)
 
-
-
+            % japanese book
+            \bibitem{永原正章2017-10-06}
+            永原：
+            スパースモデリング 基礎から動的システムへの応用，コロナ社 (2017)
+            % \bibitem{foo4}
+            % Authors:
+            % Article title, {\it Book Title} (Editor(s), Ed(s).), Publisher,
+            % pp.~00--99 (1999)
 
             % \bibitem{foo3}
             % 田中，山田：
@@ -42,7 +88,7 @@
         \end{thebibliography}
 
     \section*{テスト}
-        \bibliographystyle{../sci}
+        \bibliographystyle{../iscie}
         \bibliography{test}
 
 \end{document}
