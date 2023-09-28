@@ -22,74 +22,74 @@
 
 \begin{document}
 
-    % ===========================================================================================
-    % タイトルや住所など
-    % ===========================================================================================
-    \title{タイトル}
-    \author{山田 太郎}
-    \etitle{Title}
-    \eauthor{Taro {\sc Yamada}${}^\dagger$}
-    \headingtitle{タイトル}
-    \headingauthors{山田}
-    \ronbunyoushi{iscie.bstのテスト}
+  % ===========================================================================================
+  % タイトルや住所など
+  % ===========================================================================================
+  \title{iscie.bstのテスト}
+  \author{山田 太郎}
+  \etitle{Testing iscie.bst}
+  \eauthor{Taro {\sc Yamada}${}^\dagger$}
+  \headingtitle{iscie.bstのテスト}
+  \headingauthors{山田}
+  \ronbunyoushi{iscie.bstのテスト}
 
-    \maketitle
-    \acceptdate{1995年8月1日}
-    \address{*}{\AcceptDate}
-    \address{**}{Some University}
-    \keywords{Reinforcement learning, information alteration.}
+  % \maketitle  % 学会誌の名前が表示されないようコメントアウト
+  \acceptdate{1995年8月1日}
+  \address{*}{\AcceptDate}
+  \address{**}{Some University}
+  \keywords{bibliography style}
 
-    % この論文を見本とさせていただきました．
-    % https://www.jstage.jst.go.jp/article/iscie1988/21/12/21_12_408/_pdf
-    % https://www.jstage.jst.go.jp/article/iscie/34/10/34_261/_pdf
-    % https://www.jstage.jst.go.jp/article/iscie/35/3/35_39/_pdf
-    \section*{本文テスト}
-        参考文献\cite{azuma2008optimal,東俊一2007離散値入力型制御のための最適動的量子化器の安定性,永原正章2017-10-06}
+  % この論文を見本とさせていただきました．
+  % https://www.jstage.jst.go.jp/article/iscie1988/21/12/21_12_408/_pdf
+  % https://www.jstage.jst.go.jp/article/iscie/34/10/34_261/_pdf
+  % https://www.jstage.jst.go.jp/article/iscie/35/3/35_39/_pdf
+  \section*{本文テスト}
+    参考文献\cite{azuma2008optimal,東俊一2007離散値入力型制御のための最適動的量子化器の安定性,永原正章2017-10-06}
 
-    \section*{見本}
-        \begin{thebibliography}{9}
-            % english article 
-            \bibitem{azuma_optimal}
-            S. Azuma and T. Sugie:
-            Optimal dynamic quantizers for discrete-valued input control;
-            {\it Automatica}, Vol.~44, No.~2, pp.~396--406 (2008)
-            % \bibitem{foo1}
-            % I.\ S.\ Cie:
-            % The ISCIE style option;
-            % {\it ISCIE Journal}, Vol.~0, No.~0, pp.~000--999 (1999)
+  \section*{見本}
+    \begin{thebibliography}{9}
+      % english article 
+      \bibitem{azuma_optimal}
+      S. Azuma and T. Sugie:
+      Optimal dynamic quantizers for discrete-valued input control;
+      {\it Automatica}, Vol.~44, No.~2, pp.~396--406 (2008)
+      % \bibitem{foo1}
+      % I.\ S.\ Cie:
+      % The ISCIE style option;
+      % {\it ISCIE Journal}, Vol.~0, No.~0, pp.~000--999 (1999)
 
-            % japanese article
-            \bibitem{azuma_optimal}
-            東，杉江：
-            離散値入力型制御のための最適動的量子化器の安定性；
-            計測自動制御学会論文集，Vol.~43, No.~12, pp.~1136--1143 (2007)
-            % \bibitem{foo2}
-            % 文献：
-            % ISCIE スタイルオプション；
-            % システム/制御/情報，Vol.~00, No.~0, pp.~000--999 (1999)
+      % japanese article
+      \bibitem{azuma_optimal}
+      東，杉江：
+      離散値入力型制御のための最適動的量子化器の安定性；
+      計測自動制御学会論文集，Vol.~43, No.~12, pp.~1136--1143 (2007)
+      % \bibitem{foo2}
+      % 文献：
+      % ISCIE スタイルオプション；
+      % システム/制御/情報，Vol.~00, No.~0, pp.~000--999 (1999)
 
-            % japanese book
-            \bibitem{永原正章2017-10-06}
-            永原：
-            スパースモデリング 基礎から動的システムへの応用，コロナ社 (2017)
-            % \bibitem{foo4}
-            % Authors:
-            % Article title, {\it Book Title} (Editor(s), Ed(s).), Publisher,
-            % pp.~00--99 (1999)
+      % japanese book
+      \bibitem{永原正章2017-10-06}
+      永原：
+      スパースモデリング 基礎から動的システムへの応用，コロナ社 (2017)
+      % \bibitem{foo4}
+      % Authors:
+      % Article title, {\it Book Title} (Editor(s), Ed(s).), Publisher,
+      % pp.~00--99 (1999)
 
-            % \bibitem{foo3}
-            % 田中，山田：
-            % 論文題目；雑誌名, Vol.~0, No.~0, pp.~00--99 (1999)
+      % \bibitem{foo3}
+      % 田中，山田：
+      % 論文題目；雑誌名, Vol.~0, No.~0, pp.~00--99 (1999)
 
-            % \bibitem{foo4}
-            % Authors:
-            % Article title, {\it Book Title} (Editor(s), Ed(s).), Publisher,
-            % pp.~00--99 (1999)
-        \end{thebibliography}
+      % \bibitem{foo4}
+      % Authors:
+      % Article title, {\it Book Title} (Editor(s), Ed(s).), Publisher,
+      % pp.~00--99 (1999)
+    \end{thebibliography}
 
-    \section*{テスト}
-        \bibliographystyle{../iscie}
-        \bibliography{test}
+  \section*{テスト}
+    \bibliographystyle{../iscie}
+    \bibliography{test}
 
 \end{document}
 %

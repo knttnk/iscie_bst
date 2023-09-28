@@ -1,36 +1,30 @@
 % iscie.bst
-% Author: 田中 健太 https://github.com/knttnk
+% Author: 田中 健太(Kenta Tanaka) https://github.com/knttnk
 % Copyright (C) 2023, all rights reserved.
+% Version: 0.2.0
+%
+% This work has the LPPL maintenance status "maintained".
+% The Current Maintainer of this work is Kenta Tanaka.
 
-% The original of this file is tipsj.bst
+% The original of this file is tipsj.bst (by Shouichi MATSUI)
 % and made for writing ISCIE articles.
 % https://www.iscie.or.jp/pub/journal
 
 % If you found any issues, please open an issue at
 % https://github.com/knttnk/sci_bst
 
-%% = Notification of tipsj.bst =========================================
+% .bib ファイルの書き方の設定
+FUNCTION {bib.first.comma.last}
+{ #1 }	  % (default) zoteroやGoogle Scholarの書き方 → author = {山田, 太郎} or author = {太郎 山田} 
+% { #0 }    % 昔からの普通の書き方 → author = {山田 太郎} or author = {太郎, 山田}
 
-    % version 0.30 for JBibTeX versions 0.30 or later, LaTeX version 2.09.
-    % Copyright (C) 1990, all rights reserved.
-    %
-    % This file is derived from btxbst.doc of BibTeX 0.99c
-    %
-    % Copying of this file is authorized only if either
-    % (1) you make absolutely no changes to your copy, including name, or
-    % (2) if you do make changes, you name it something other than
-    % jbtxbst.doc, jplain.bst, junsrt.bst, jalpha.bst, jabbrv.bst,
-    % tipsj.bst, jipsj.bst, tieice.bst, jname.bst, jorsj.bst
-    %
-    % This restriction helps ensure that all standard styles are identical.
-    % The file jbtxbst.doc has the documentation for this style.
-    %
-    % Please notify Shouichi MATSUI(matsui@denken.or.jp) of any bugs in
-    % these standard styles or in this documentation file.
-    % 松井 正一  (財) 電力中央研究所　情報システム部
-
-%% = The end of notification of tipsj.bst ==============================
-
+% Vol, No, pp の見た目の設定
+% チルダにするかスペースにするかを決める数字部分の桁数
+% pp.~1--2 "1--2"の部分が max.tilde.length 未満のとき
+% pp. 1--2 "1--2"の部分が max.tilde.length 以上のとき
+FUNCTION {max.tilde.length}
+{ #11 }	  % (default)
+% { #0 }
 
 ENTRY
   { address
@@ -80,6 +74,7 @@ FUNCTION {or}
     'skip$
   if$
 }
+
 FUNCTION {init.state.consts}
 { #0 'before.all :=
   #1 'mid.sentence :=
@@ -102,36 +97,6 @@ FUNCTION {field.or.null}
 
 FUNCTION {output.nonnull} { 
   's :=
-
-  % EDITING:
-  % "a" write$
-  % is.article int.to.str$ write$
-  % "s" write$
-  % output.state int.to.str$ write$
-
-  % is.article output.state after.author = and {
-  %   output.state after.article.title = {
-  %     author field.or.null is.kanji.str$ 
-  %     editor field.or.null is.kanji.str$ or
-  %     organization field.or.null is.kanji.str$ or {
-  %       "；" * write$
-  %     } {
-  %       "; " * write$
-  %     } if$
-  %     after.article.title 'output.state :=
-  %     "aaaa" * write$
-  %   }
-  %   'skip$
-  %   if$
-  % }
-  % 'write$
-  % if$
-
-
-
-
-
-  % after.article.title 'output.state :=
 
   output.state mid.sentence = {
     author field.or.null is.kanji.str$ 
@@ -261,7 +226,7 @@ FUNCTION {emphasize}
     { pop$ "" }
     { duplicate$ is.kanji.str$
   'skip$
-  { "{\em " swap$ * "}" * }
+  { "{\it " swap$ * "}" * }
       if$
     }
   if$
@@ -280,7 +245,13 @@ FUNCTION {format.names} {
   { 
     s nameptr "{ff}{ll}" format.name$ is.kanji.str$ {
       % 漢字のとき
-      s nameptr "{ff}" format.name$ 't :=
+      bib.first.comma.last {
+        % .bib の author = {山田, 太郎} or author = {太郎 山田} 
+        s nameptr "{ll}" format.name$ 't :=
+      } {
+        % .bib の author = {太郎, 山田} or author = {山田 太郎} 
+        s nameptr "{ff}" format.name$ 't :=
+      } if$
     } {
       % 英語のとき
       s nameptr "{f.~}{v.~}{ll}{, jj}" format.name$ 't :=
@@ -411,7 +382,7 @@ title emphasize
 }
 
 FUNCTION {tie.or.space.connect}
-{ duplicate$ text.length$ #3 <
+{ duplicate$ text.length$ max.tilde.length <
     { "~" }
     { " " }
   if$
@@ -670,7 +641,7 @@ FUNCTION {format.article.crossref}
        { " " journal *  }
 
 
-        { "in {\em " journal * "\/}" * }
+        { "in {\it " journal * "\/}" * }
 
 
           if$
@@ -687,20 +658,32 @@ FUNCTION {format.article.crossref}
   if$
   " \cite{" * crossref * "}" *
 }
-FUNCTION {format.crossref.editor}
-{ editor is.kanji.str$
+FUNCTION {format.crossref.editor} {
+  editor is.kanji.str$ {
+    % 漢字のとき
+    bib.first.comma.last {
+      % .bib の author = {山田, 太郎} or author = {太郎 山田} 
+      editor #1 "{ll}" format.name$ duplicate$
+    } {
+      % .bib の author = {太郎, 山田} or author = {山田 太郎} 
+      editor #1 "{ff}" format.name$ duplicate$
+    } if$
 
-     {editor #1 "{ff}" format.name$ duplicate$
+    empty$ {
+      bib.first.comma.last {
+        % .bib の author = {山田, 太郎} or author = {太郎 山田} 
+        pop$ editor #1 "{ff}" format.name$
+      } {
+        % .bib の author = {太郎, 山田} or author = {山田 太郎} 
+        pop$ editor #1 "{ll}" format.name$
+      } if$
+    }
+    'skip$
+    if$
+  } {
+    editor #1 "{vv~}{ll}" format.name$
+  } if$
 
-      empty$
-   {pop$ editor #1 "{ll}" format.name$}
-   'skip$
-      if$
-      }
-
-      {editor #1 "{vv~}{ll}" format.name$}
-
-  if$
   editor num.names$ duplicate$
   #2 >
     { editor is.kanji.str$
@@ -711,28 +694,42 @@ FUNCTION {format.crossref.editor}
     { #2 <
   'skip$
 
-  { editor #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
+  {
+    editor #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" = {
+      editor is.kanji.str$ {
+        "他" *
+      } {
+        ", et~al." *
+      } if$
+    } {
+      editor is.kanji.str$ {
+        ", " *
 
-       { editor is.kanji.str$
+        bib.first.comma.last {
+          % .bib の author = {山田, 太郎} or author = {太郎 山田} 
+          editor #2 "{ll}" format.name$ duplicate$
+        } {
+          % .bib の author = {太郎, 山田} or author = {山田 太郎} 
+          editor #2 "{ff}" format.name$ duplicate$
+        } if$
 
-     {"他" *} {", et~al." * } if$
-
-       }
-       { editor is.kanji.str$
-     {
-
-      ", " *
-
-        editor #2 "{ff}" format.name$ duplicate$
-        empty$
-       {pop$ editor #2 "{ll}" format.name$}
-       'skip$
+        empty$ {
+          bib.first.comma.last {
+            % .bib の author = {山田, 太郎} or author = {太郎 山田} 
+            pop$ editor #2 "{ff}" format.name$
+          } {
+            % .bib の author = {太郎, 山田} or author = {山田 太郎} 
+            pop$ editor #2 "{ll}" format.name$
+          } if$
+        }
+        'skip$
         if$
-      *
-     }
-     {" and " * editor #2 "{vv~}{ll}" format.name$ * }
-         if$
-       }
+        *
+      } {
+        " and " * editor #2 "{vv~}{ll}" format.name$ *
+      }
+      if$
+    }
     if$
   }
       if$
@@ -799,7 +796,7 @@ FUNCTION {format.incoll.inproc.crossref}
 
 
 
-     {"in {\em " booktitle * "\/}" * }
+     {"in {\it " booktitle * "\/}" * }
 
 
 
