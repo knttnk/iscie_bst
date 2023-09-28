@@ -19,9 +19,11 @@ FUNCTION {bib.first.comma.last}
 % { #0 }    % 昔からの普通の書き方 → author = {山田 太郎} or author = {太郎, 山田}
 
 % Vol, No, pp の見た目の設定
-% チルダにするかスペースにするかを決める数字部分の桁数
-% pp.~1--2 "1--2"の部分が max.tilde.length 未満のとき
-% pp. 1--2 "1--2"の部分が max.tilde.length 以上のとき
+% 文字と数字の間を，チルダにするかスペースにするかを決める
+% チルダは改行を許さないスペースなので，あまり大きな数字に設定すると
+% 無理やり改行されて見た目が悪くなるので注意
+% pp.~1--2 (<= "1--2"の部分が max.tilde.length 未満のとき)
+% pp. 1--2 (<= "1--2"の部分が max.tilde.length 以上のとき)
 FUNCTION {max.tilde.length}
 { #11 }	  % (default)
 % { #0 }
