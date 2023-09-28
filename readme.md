@@ -10,7 +10,7 @@ ISCIEの[論文誌，学会誌](https://www.iscie.or.jp/pub/journal)に発行す
 2. リリースにある iscie.bst というファイルをダウンロードし，テキストエディタで開いてつぎの設定をしてください．
    17行目，用意したbibファイルの書き方に応じて設定をします．
    ```bst
-   FUNCTION {bib.first.comma.last}
+   FUNCTION {bib.last.comma.first}
    { #1 }	  % (default) zoteroやGoogle Scholarの書き方 → author = {山田, 太郎} or author = {太郎 山田} 
    % { #0 }    % 昔からの書き方 → author = {山田 太郎} or author = {太郎, 山田}
    ```

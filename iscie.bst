@@ -14,14 +14,17 @@
 % https://github.com/knttnk/sci_bst
 
 % .bib ファイルの書き方の設定
-FUNCTION {bib.first.comma.last}
+% https://shiro-takeda.hateblo.jp/entry/2638
+% ここに記述されている問題を解決するためにある設定．
+% 用意されているbibファイルがどのような書き方に準拠しているかを確認して，設定してください．
+FUNCTION {bib.last.comma.first}
 { #1 }	  % (default) zoteroやGoogle Scholarの書き方 → author = {山田, 太郎} or author = {太郎 山田} 
 % { #0 }    % 昔からの普通の書き方 → author = {山田 太郎} or author = {太郎, 山田}
 
 % Vol, No, pp の見た目の設定
-% 文字と数字の間を，チルダにするかスペースにするかを決める
+% 文字と数字の間を，チルダにするかスペースにするかを決める．
 % チルダは改行を許さないスペースなので，あまり大きな数字に設定すると
-% 無理やり改行されて見た目が悪くなるので注意
+% 無理やり改行されて見た目が悪くなるので注意．
 % pp.~1--2 (<= "1--2"の部分が max.tilde.length 未満のとき)
 % pp. 1--2 (<= "1--2"の部分が max.tilde.length 以上のとき)
 FUNCTION {max.tilde.length}
@@ -247,7 +250,7 @@ FUNCTION {format.names} {
   { 
     s nameptr "{ff}{ll}" format.name$ is.kanji.str$ {
       % 漢字のとき
-      bib.first.comma.last {
+      bib.last.comma.first {
         % .bib の author = {山田, 太郎} or author = {太郎 山田} 
         s nameptr "{ll}" format.name$ 't :=
       } {
@@ -663,7 +666,7 @@ FUNCTION {format.article.crossref}
 FUNCTION {format.crossref.editor} {
   editor is.kanji.str$ {
     % 漢字のとき
-    bib.first.comma.last {
+    bib.last.comma.first {
       % .bib の author = {山田, 太郎} or author = {太郎 山田} 
       editor #1 "{ll}" format.name$ duplicate$
     } {
@@ -672,7 +675,7 @@ FUNCTION {format.crossref.editor} {
     } if$
 
     empty$ {
-      bib.first.comma.last {
+      bib.last.comma.first {
         % .bib の author = {山田, 太郎} or author = {太郎 山田} 
         pop$ editor #1 "{ff}" format.name$
       } {
@@ -707,7 +710,7 @@ FUNCTION {format.crossref.editor} {
       editor is.kanji.str$ {
         ", " *
 
-        bib.first.comma.last {
+        bib.last.comma.first {
           % .bib の author = {山田, 太郎} or author = {太郎 山田} 
           editor #2 "{ll}" format.name$ duplicate$
         } {
@@ -716,7 +719,7 @@ FUNCTION {format.crossref.editor} {
         } if$
 
         empty$ {
-          bib.first.comma.last {
+          bib.last.comma.first {
             % .bib の author = {山田, 太郎} or author = {太郎 山田} 
             pop$ editor #2 "{ff}" format.name$
           } {
