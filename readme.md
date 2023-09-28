@@ -7,7 +7,7 @@ ISCIEの[論文誌，学会誌](https://www.iscie.or.jp/pub/journal)に発行す
 # Set up
 
 1. bibファイルを用意してください．Google Scholar から取ってきた場合は，書籍も`@article`になっていることがありますので，注意してください．
-2. iscie.bstを開き，つぎの設定をしてください．
+2. リリースにある iscie.bst というファイルをダウンロードし，テキストエディタで開いてつぎの設定をしてください．
    17行目，用意したbibファイルの書き方に応じて設定をします．
    ```bst
    FUNCTION {bib.first.comma.last}
@@ -20,7 +20,7 @@ ISCIEの[論文誌，学会誌](https://www.iscie.or.jp/pub/journal)に発行す
    { #11 }	  % (default)
    % { #0 }
    ```
-3. リリースにある iscie.bst というファイルを配置します．フォルダごと提出しなければならない場合など，別PCでも環境を再現したい場合は，texファイルと同じ場所に置いてください．PDFファイルだけを作成したり提出したりしたい場合は，`[home]/texmf/bibtex/bst`に配置すると，毎回この作業をすることなく iscie.bst が使えます．
+3. iscie.bst を配置します．フォルダごと提出しなければならない場合など，別PCでも環境を再現したい場合は，texファイルと同じ場所に置いてください．PDFファイルだけを作成したり提出したりしたい場合は，`[home]/texmf/bibtex/bst`に配置すると，毎回この作業をすることなく iscie.bst が使えます．
 
 # Example
 `test/test.tex` をご覧ください．
