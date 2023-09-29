@@ -1,7 +1,17 @@
-\begin{thebibliography}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  This bbl file is created by iscie.bst ver.0.3.0
+%  The latest iscie.bst is available at
+%  <https://github.com/knttnk/sci_bst>
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{thebibliography}{9}
+
 
 \bibitem{azuma2008optimal}
-S.~Azuma and T.~Sugie: Optimal dynamic quantizers for discrete-valued input control; {\it Automatica}, Vol.~44, No.~2, pp.~396--406 (2008)
+S.~Azuma and T.~Sugie: Optimal dynamic quantizers for discrete-valued input control; \textit{Automatica}, Vol.~44, No.~2, pp.~396--406 (2008)
 
 \bibitem{東俊一2007離散値入力型制御のための最適動的量子化器の安定性}
 東，杉江：離散値入力型制御のための最適動的量子化器の安定性；計測自動制御学会論文集，Vol.~43, No.~12, pp.~1136--1143 (2007)
@@ -9,4 +19,8 @@ S.~Azuma and T.~Sugie: Optimal dynamic quantizers for discrete-valued input cont
 \bibitem{永原正章2017-10-06}
 永原：スパースモデリング 基礎から動的システムへの応用，コロナ社 (2017)
 
+\bibitem{azuma2008stability}
+S.~Azuma and T.~Sugie: Stability analysis of quantized feedback systems including optimal dynamic quantizers;  in \textit{47th IEEE Conference on Decision and Control}, pp.~3392--3397 (2008)
+
 \end{thebibliography}
+

@@ -6,6 +6,7 @@
 \graphicspath{{images/}}
 \usepackage{amsfonts} %\mathbb{R} 実数など
 \usepackage{physics}
+% \usepackage{natbib}
 
 
 % ===========================================================================================
@@ -44,12 +45,12 @@
   % https://www.jstage.jst.go.jp/article/iscie/34/10/34_261/_pdf
   % https://www.jstage.jst.go.jp/article/iscie/35/3/35_39/_pdf
   \section*{本文テスト}
-    参考文献\cite{azuma2008optimal,東俊一2007離散値入力型制御のための最適動的量子化器の安定性,永原正章2017-10-06}
+    参考文献\cite{azuma2008optimal,東俊一2007離散値入力型制御のための最適動的量子化器の安定性,永原正章2017-10-06,azuma2008stability}
 
   \section*{見本}
     \begin{thebibliography}{9}
       % english article 
-      \bibitem{azuma_optimal}
+      \bibitem{azuma2008optimal}
       S. Azuma and T. Sugie:
       Optimal dynamic quantizers for discrete-valued input control;
       {\it Automatica}, Vol.~44, No.~2, pp.~396--406 (2008)
@@ -59,7 +60,7 @@
       % {\it ISCIE Journal}, Vol.~0, No.~0, pp.~000--999 (1999)
 
       % japanese article
-      \bibitem{azuma_optimal}
+      \bibitem{東俊一2007離散値入力型制御のための最適動的量子化器の安定性}
       東，杉江：
       離散値入力型制御のための最適動的量子化器の安定性；
       計測自動制御学会論文集，Vol.~43, No.~12, pp.~1136--1143 (2007)
@@ -85,7 +86,17 @@
       % Authors:
       % Article title, {\it Book Title} (Editor(s), Ed(s).), Publisher,
       % pp.~00--99 (1999)
+
+      % english inproceedings
+      \bibitem{azuma2008stability}
+      S. Azuma and T. Sugie:
+      Stability analysis of quantized feedback systems including optimal dynamic quantizers;
+      in {\it 47th IEEE Conf. on Dec. and Contr.} (2008)
     \end{thebibliography}
+
+  \section*{改ページ防止}
+    見本の参考文献が改ページされないように，意味のない文章を並べます．あああああああああああああああああああああああああああああああああああああああああああああ．
+
 
   \section*{テスト}
     \bibliographystyle{../iscie}
