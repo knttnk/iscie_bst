@@ -1,7 +1,7 @@
 % iscie.bst
 % Author: 田中 健太(Kenta Tanaka) https://github.com/knttnk
 % Copyright (C) 2023, all rights reserved.
-% Version: 0.3.0
+% Version: 0.4.0
 %
 % This work has the LPPL maintenance status "maintained".
 % The Current Maintainer of this work is Kenta Tanaka.
@@ -15,7 +15,7 @@
 
 
 % version 指定
-FUNCTION {iscie.version} { "0.3.0" }
+FUNCTION {iscie.version} { "0.4.0" }
 
 % Debug mode．0 以外を指定すると様々な情報を表示させることが可能．
 FUNCTION {iscie.debug}
