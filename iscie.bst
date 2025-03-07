@@ -386,11 +386,11 @@ FUNCTION {bst.and.others.num}
 % 
 % 次の関数により N1 の値を設定する。
 FUNCTION {bst.max.author.num}
-{ #8 }    % とりあえず8人より多い場合に設定 (default).
+{ #4 }    %  (default)
 
 % 次の関数により N2 の値を設定する。
 FUNCTION {bst.max.author.num.display}
-{ #3 }    % (default)
+{ #1 }    % (default)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
