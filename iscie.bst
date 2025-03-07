@@ -3424,7 +3424,7 @@ FUNCTION {article}
     { format.month output.nocomma }
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
   format.note output.nocomma
   fin.entry
 }
@@ -3458,7 +3458,7 @@ FUNCTION {book}
     'skip$
   if$
   
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
   format.note output.nocomma
   format.hoyakusho output.nocomma
   fin.entry
@@ -3474,7 +3474,7 @@ FUNCTION {booklet}
   format.howpublished output.nocomma
   format.address output.nocomma
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3507,7 +3507,7 @@ FUNCTION {inbook}
     'skip$
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3535,7 +3535,7 @@ FUNCTION {incollection}
     'skip$
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3563,7 +3563,7 @@ FUNCTION {inproceedings}
     { format.month output.nocomma }
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3610,7 +3610,7 @@ FUNCTION {manual}
     'skip$
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3635,7 +3635,7 @@ FUNCTION {mastersthesis}
     'skip$
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3716,7 +3716,7 @@ FUNCTION {phdthesis}
     'skip$
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3744,7 +3744,7 @@ FUNCTION {proceedings}
     'skip$
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3770,7 +3770,7 @@ FUNCTION {techreport}
     'skip$
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3796,7 +3796,7 @@ FUNCTION {unpublished}
     }
   if$
 
-  format.url.doi output.nocomma
+  % format.url.doi output.nocomma  % ISCIEでは DOI は出力しない
 
   format.note output.nocomma
   fin.entry
@@ -3981,15 +3981,15 @@ FUNCTION {sort.format.names.abb}
   numnames bst.and.others.num <
      { s sort.format.names }
      { s check.kanji.str
-     % author 名が日本語を含むケース
+      % author 名が日本語を含むケース
      { bst.sei.mei.order #0 =
-         { s #1 "{ff }{ll}" format.name$ " et al. " * }
-         { s #1 "{ll }{ff}" format.name$ " et al. " * }
-       if$
-     }
+        { s #1 "{ff }{ll}" format.name$ " et al. " * }
+        { s #1 "{ll }{ff}" format.name$ " et al. " * }
+      if$
+    }
      { s #1 "{ll}{ ff}{ jj}" format.name$ " et al. " * }
-       if$
-     }
+    if$
+  }
   if$
 }
 
