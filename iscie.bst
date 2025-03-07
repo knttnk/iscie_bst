@@ -374,6 +374,8 @@ FUNCTION {bst.cite.and.jp}
 %
 % 何人以上の著者がいるときに引用部分で et al.で省略するか。3人以上のとき
 % に略すときは #3 を指定。
+% この設定は本文中のもの。文献一覧での振る舞いを変えたい場合は
+% bst.max.author.num, bst.max.author.num.display を変更する。
 FUNCTION {bst.and.others.num}
 { #9999 }      % 99人以上なら省略する（実質省略しない）。(default)
 % { #4 }
