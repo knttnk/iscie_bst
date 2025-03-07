@@ -404,7 +404,7 @@ FUNCTION {bst.and.others}
 %%% 日本語用
 %
 FUNCTION {bst.and.others.jp}
-{ "他" }    % (default)
+{ "，ほか" }    % (default)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    author 
